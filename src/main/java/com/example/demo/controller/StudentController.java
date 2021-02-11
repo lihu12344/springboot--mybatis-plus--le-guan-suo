@@ -39,7 +39,25 @@ public class StudentController {
         Student student=studentService.getById(1);
         student.setName("海贼王");
 
-        studentService.updateById(student);
+        try {
+            Thread.sleep(10000);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        boolean flag=studentService.updateById(student);
+        System.out.println("更新操作："+flag);
+
+        return studentService.getById(student.getId());
+    }
+
+    @RequestMapping("/update2")
+    public Student update2(){
+        Student student=studentService.getById(1);
+        student.setName("海贼王");
+
+        boolean flag=studentService.updateById(student);
+        System.out.println("更新操作："+flag);
 
         return studentService.getById(student.getId());
     }
